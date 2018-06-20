@@ -40,3 +40,5 @@ android/app/libs
 android/keystores/debug.keystore
 yarn-error.log
 android/app/joyeria-vakery.keystore
+src/firebase.js
+src/store/AppStore.js
