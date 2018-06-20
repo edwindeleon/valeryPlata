@@ -42,3 +42,4 @@ yarn-error.log
 android/app/joyeria-vakery.keystore
 src/firebase.js
 src/store/AppStore.js
+src/store/AppStore.js
