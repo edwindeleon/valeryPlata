@@ -7,7 +7,11 @@
 		"test": "jest",
 		"ios": "open ios/MyApp.xcworkspace"
 	},
-	"rnpm": { "assets": [ "src/assets/fontello/font" ] },
+	"rnpm": {
+		"assets": [
+			"src/assets/fontello/font"
+		]
+	},
 	"dependencies": {
 		"firebase": "^3.6.7",
 		"lodash": "^4.17.4",
@@ -30,7 +34,7 @@
 		"react-native-onesignal": "^3.0.0",
 		"react-native-scrollable-tab-view": "^0.7.1",
 		"react-native-share": "1.0.19",
-		"react-native-vector-icons": "^4.0.0"
+		"react-native-vector-icons": "^4.6.0"
 	},
 	"devDependencies": {
 		"babel-jest": "18.0.0",

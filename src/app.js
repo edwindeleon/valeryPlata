@@ -73,7 +73,7 @@ class App extends Component {
             key="setting"
             component={SettingScreen}
             hideNavBar={false}
-            title="Edit your profile"
+            title="Editar Perfil"
             panHandlers={null}
             duration={0}
           />

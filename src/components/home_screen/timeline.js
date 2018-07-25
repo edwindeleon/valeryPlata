@@ -103,7 +103,8 @@ export default class Timeline extends Component {
           
           
           { data.text ? <Text style={styles.info}>{ data.text }</Text> : null }
-          <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text>
+          { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
+          
           
         </View>
         <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>

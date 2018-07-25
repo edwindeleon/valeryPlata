@@ -57,6 +57,9 @@
       <string>SimpleLineIcons.ttf</string>
       <string>Zocial.ttf</string>
       <string>valery.ttf</string>
+      <string>valery.woff</string>
+      <string>valery.woff2</string>
+      <string>Feather.ttf</string>
     </array>
     <key>UIBackgroundModes</key>
     <array>

@@ -88,12 +88,8 @@ export default class HomeScreen extends Component {
           renderTabBar={() => <NavigationTab />}>
             <Timeline tabLabel="tags" />
             <Products tabLabel="diamond-1"/>
-            
-                  <CreateNew tabLabel="plus"/>
-                  <PushNot tabLabel="comment-alt"/>
-              
-            
-            
+            <CreateNew tabLabel="plus"/>
+            <PushNot tabLabel="comment-alt"/>
             <MyOrders tabLabel="heart"/>
             <Profile tabLabel="user"/>
           </ScrollableTabView>
@@ -117,8 +113,6 @@ export default class HomeScreen extends Component {
           renderTabBar={() => <NavigationTab />}>
             <Timeline tabLabel="tags" />
             <Products tabLabel="diamond-1"/>
-            
-            
             <MyOrders tabLabel="heart"/>
             <Profile tabLabel="user"/>
           </ScrollableTabView>

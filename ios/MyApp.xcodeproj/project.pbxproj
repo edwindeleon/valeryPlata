@@ -48,6 +48,10 @@
 		F76765AB1E2FD7CB00D56750 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76765AA1E2FD7CB00D56750 /* SystemConfiguration.framework */; };
 		F76766071E30303E00D56750 /* fishing.caf in Resources */ = {isa = PBXBuildFile; fileRef = F76766061E30303E00D56750 /* fishing.caf */; };
 		37B7F9E507A14649940C3976 /* valery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EC2A8DDD3F4C77A1740425 /* valery.ttf */; };
+		0A1433D89CD147C582CFBBBF /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DEA7E1CA39A47E091795DC3 /* libRCTVideo.a */; };
+		23E3A637533B4403B87C786A /* valery.woff in Resources */ = {isa = PBXBuildFile; fileRef = A1944325A42D4CA7A1DF805C /* valery.woff */; };
+		B6E136D04E194894BE9585F5 /* valery.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 72E092930F564471A674485E /* valery.woff2 */; };
+		8B1782FD0E134216B9DC84E9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 227F21E1E3854D208197E0DA /* Feather.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -342,6 +346,11 @@
 		F76766061E30303E00D56750 /* fishing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fishing.caf; sourceTree = "<group>"; };
 		FFC542EE5FF84276BA0B444F /* RCTOneSignal.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOneSignal.xcodeproj; path = "../node_modules/react-native-onesignal/ios/RCTOneSignal.xcodeproj"; sourceTree = "<group>"; };
 		04EC2A8DDD3F4C77A1740425 /* valery.ttf */ = {isa = PBXFileReference; name = "valery.ttf"; path = "../src/assets/fontello/font/valery.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		77AFC9ECCE6D404D8CC7AE43 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; name = "RCTVideo.xcodeproj"; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		5DEA7E1CA39A47E091795DC3 /* libRCTVideo.a */ = {isa = PBXFileReference; name = "libRCTVideo.a"; path = "libRCTVideo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		A1944325A42D4CA7A1DF805C /* valery.woff */ = {isa = PBXFileReference; name = "valery.woff"; path = "../src/assets/fontello/font/valery.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		72E092930F564471A674485E /* valery.woff2 */ = {isa = PBXFileReference; name = "valery.woff2"; path = "../src/assets/fontello/font/valery.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		227F21E1E3854D208197E0DA /* Feather.ttf */ = {isa = PBXFileReference; name = "Feather.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +389,7 @@
 				BE56EB1AA7D145308432E2BE /* libRCTGoogleAnalyticsBridge.a in Frameworks */,
 				512A344408604EF2A2AF489A /* libCodePush.a in Frameworks */,
 				B738DA35E625491CA775415E /* libz.tbd in Frameworks */,
+				0A1433D89CD147C582CFBBBF /* libRCTVideo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +554,7 @@
 				FFC542EE5FF84276BA0B444F /* RCTOneSignal.xcodeproj */,
 				2250B303BDDB4E2681AF543F /* RCTGoogleAnalyticsBridge.xcodeproj */,
 				3176C445F8C14F80BEEA69C4 /* CodePush.xcodeproj */,
+				77AFC9ECCE6D404D8CC7AE43 /* RCTVideo.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -597,6 +608,9 @@
 				C1096C7E6AE14670ACF29E4A /* SimpleLineIcons.ttf */,
 				D51E53A934694079B212495C /* Zocial.ttf */,
 				04EC2A8DDD3F4C77A1740425 /* valery.ttf */,
+				A1944325A42D4CA7A1DF805C /* valery.woff */,
+				72E092930F564471A674485E /* valery.woff2 */,
+				227F21E1E3854D208197E0DA /* Feather.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1082,6 +1096,9 @@
 				5FA92B285A6F4D118CFE3BDD /* Zocial.ttf in Resources */,
 				F738E3291E2F158D005CF6BD /* fontello.ttf in Resources */,
 				37B7F9E507A14649940C3976 /* valery.ttf in Resources */,
+				23E3A637533B4403B87C786A /* valery.woff in Resources */,
+				B6E136D04E194894BE9585F5 /* valery.woff2 in Resources */,
+				8B1782FD0E134216B9DC84E9 /* Feather.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,6 +1221,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyApp.app/MyApp";
@@ -1221,6 +1239,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyApp.app/MyApp";

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   Text,
+  TextInput,
   View,
   StyleSheet,
   TouchableOpacity,
@@ -37,10 +38,13 @@ export default class Products extends Component {
       isLoading: true,
       isEmpty: false,
       isFinished: false,
+      postText: '',
+      postTitle: '',
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
     }
+    
   }
-
+     
   componentDidMount() {
     console.log("--------- TIMELINE --------- " + this.state.counter)
     firebaseApp.database().ref('posts2').orderByChild('createdAt').limitToLast(this.state.counter).on('value',
@@ -60,7 +64,6 @@ export default class Products extends Component {
   componentDidUpdate() {
     //LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
   }
-
   render() {
     return (
       <View style={styles.container}>
@@ -82,6 +85,8 @@ export default class Products extends Component {
     //console.log("TIMELINE :::: _renderRow " + data.title)
     const timeString = moment(data.createdAt).fromNow()
     const height = screenWidth*data.imageHeight/data.imageWidth
+    let theId = data.puid
+    let elTexto = this.state.postText
     const shareOptions = {
       title: data.title + " Valery Plata",
       url: "http://myapp.shop/post/" + data.puid,
@@ -93,41 +98,118 @@ export default class Products extends Component {
             </TouchableOpacity>
           : null
     const Status = (data.status === 'disponible') ? <Text style={{fontWeight:'bold',color:"green"}}>{data.status.toUpperCase()}</Text> : <Text style={{fontWeight:'bold',color:"red"}}>{data.status.toUpperCase()}</Text>
-    return (
-      <View style={styles.card}>
-        <View style={styles.postInfo}>
-          <Text style={styles.title}>{ data.title }</Text>
-        </View>
-        
-        <View style={styles.postInfo}>
-          
-          
-          { data.text ? <Text style={styles.info}>{ data.text }</Text> : null }
-          <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text>
-        </View>
-        <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
-          <Image
-            source={{ uri:data.image }}
-            resizeMode='contain'
-            style={{
-              height: height,
-              width: screenWidth,
-              alignSelf: 'center',
-            }}
-          />
-        </TouchableOpacity>
-        <View style={styles.postButtons}>
-          { BuyButton }
-          
-          <TouchableOpacity style={styles.button} onPress={()=>{ Share.open(shareOptions) }}>
-            <Icon name='md-share' size={30} color='#eee'/>
-          </TouchableOpacity>
-        </View>
-      </View>
-    )
+    if (this.props.appStore.user_type ==1) {
+        return (
+          <View style={styles.card}>
+            <View style={styles.postButtons}>
+              <TouchableOpacity style={styles.button} onPress={() => this.handleDisabled(theId)}>
+                  <Icon name='md-create' size={20} color='#eee'/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={() => this.handleDisabled(theId)}>
+                  <Icon name='md-trash' size={20} color='#eee'/>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.postInfo}>
+
+              
+            </View>
+            
+              <View style={styles.titleContainer}>
+                <TextInput
+                style={styles.inputField}
+                defaultValue={data.title}
+                onChangeText={(text) => this.setState({ postTitle: text })}
+                underlineColorAndroid='transparent'
+                placeholder='Título'
+                placeholderTextColor='rgba(0,0,0,.6)'
+                onSubmitEditing={(event) => {
+                  this.refs.SecondInput.focus();
+                }}
+                />
+              </View>
+              
+              <View style={styles.inputContainer}>
+                  { data.text ? <TextInput
+                   ref= {(el) => { this.postText = el; }}
+                  onChangeText={(postText) => this.setState({postText})}
+                  multiline={true}
+                  style={styles.inputField}
+                  underlineColorAndroid='transparent'
+                  placeholder='Descripción (opcional)'
+                  defaultValue={ data.text }
+                  placeholderTextColor='rgba(0,0,0,.6)'
+                  /> : null }
+                </View>
+                <View style={styles.inputContainer}>
+                  <Text>{ elTexto }{data.puid}</Text>
+                </View>
+            <View style={styles.postInfo}>
+              
+              
+               
+              { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
+            </View>
+            <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
+              <Image
+                source={{ uri:data.image }}
+                resizeMode='contain'
+                style={{
+                  height: height,
+                  width: screenWidth,
+                  alignSelf: 'center',
+                }}
+              />
+            </TouchableOpacity>
+            <View style={styles.postButtons}>
+              { BuyButton }
+              
+              <TouchableOpacity style={styles.button} onPress={()=>{ Share.open(shareOptions) }}>
+                <Icon name='md-share' size={30} color='#eee'/>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )
+      }
+      else{
+        return (
+          <View style={styles.card}>
+            <View style={styles.postInfo}>
+              <Text style={styles.title}>{ data.title }</Text>
+
+            </View>
+            
+            <View style={styles.postInfo}>
+              
+              
+              { data.text ? <Text style={styles.info}>{ data.text }</Text> : null }
+              { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
+            </View>
+            <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
+              <Image
+                source={{ uri:data.image }}
+                resizeMode='contain'
+                style={{
+                  height: height,
+                  width: screenWidth,
+                  alignSelf: 'center',
+                }}
+              />
+            </TouchableOpacity>
+            <View style={styles.postButtons}>
+              { BuyButton }
+              
+              <TouchableOpacity style={styles.button} onPress={()=>{ Share.open(shareOptions) }}>
+                <Icon name='md-share' size={30} color='#eee'/>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )
+      }
   }
 
+
   _flagPost = (postData) => {
+
     console.log("--------> FLAG !!!!!!")
     console.log(postData)
     Alert.alert(
@@ -203,6 +285,7 @@ export default class Products extends Component {
   }
 
   _renderFooter = () => {
+
     if (this.state.isLoading) {
       return (
         <View style={styles.waitView}>
@@ -298,4 +381,38 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
+  titleContainer: {
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgba(255,255,255,.6)',
+    marginBottom: 10,
+    marginLeft: 10,
+    marginTop: 5,
+    padding: 5,
+    borderWidth: 1,
+    borderColor: '#e2e2e2',
+    borderRadius: 2,
+  },
+  inputField: {
+    flex: 1,
+    width: 300,
+    paddingLeft: 10,
+    paddingTop: 4,
+    paddingBottom: 4,
+    fontSize: 15,
+    color: '#666'
+  },
+  inputContainer: {
+    height: 140,
+    width: 300,
+    backgroundColor: 'rgba(255,255,255,.6)',
+    marginBottom: 10,
+    marginLeft: 10,
+    marginTop: 5,
+    padding: 5,
+    borderWidth: 1,
+    borderColor: '#e2e2e2',
+    borderRadius: 2,
+  },
+
 })
