@@ -95,6 +95,7 @@ export default class Timeline extends Component {
     //console.log("TIMELINE :::: _renderRow " + data.title)
     const timeString = moment(data.createdAt).fromNow()
     const height = screenWidth*data.imageHeight/data.imageWidth
+    let theId = data.puid
     let preDesc = this.state.postText
     let dataDesc = data.text
     let _postText = ''
@@ -122,7 +123,7 @@ export default class Timeline extends Component {
               <TouchableOpacity style={styles.button} onPress={this._handleNewPost2}>
                   <Icon name='md-checkmark-circle' size={20} color='#eee'/>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.button} onPress={() => this.handleDisabled()}>
+              <TouchableOpacity style={styles.button} onPress={() => this.removeItem(theId)}>
                   <Icon name='md-trash' size={20} color='#eee'/>
               </TouchableOpacity>
             </View>
@@ -238,6 +239,20 @@ export default class Timeline extends Component {
           </View>
         )
       }
+  }
+  removeItem(theId) {
+    Alert.alert(
+      'Eliminar Publicacion',
+      'Realmente desea eliminar esta Publicacion?',
+      [
+        { text: 'No', onPress: () => {}, style: 'cancel' },
+        { text: 'Si', onPress: () => {
+              firebaseApp.database().ref(`/posts/${theId}`).remove()
+            }
+          }
+        
+      ]
+    )
   }
   _handleNewPost2 = () => {
     this.setState({
