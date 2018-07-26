@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   Text,
+  TextInput,
   View,
   StyleSheet,
   TouchableOpacity,
@@ -21,6 +22,7 @@ import moment from 'moment'
 import { observer,inject } from 'mobx-react/native'
 import { getColor } from '../config'
 import { firebaseApp } from '../../firebase'
+import firebase from 'firebase'
 
 
 const screenWidth = Dimensions.get('window').width
@@ -37,6 +39,17 @@ export default class Timeline extends Component {
       isLoading: true,
       isEmpty: false,
       isFinished: false,
+      createdAt: '',
+      postText: '',
+      postTitle: '',
+      postPrice: '',
+      username: '',
+      uid: '',
+      puid: '',
+      productType: null,
+      image: '',
+      imageHeight: null,
+      imageWidth: null,
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
     }
   }
@@ -82,9 +95,18 @@ export default class Timeline extends Component {
     //console.log("TIMELINE :::: _renderRow " + data.title)
     const timeString = moment(data.createdAt).fromNow()
     const height = screenWidth*data.imageHeight/data.imageWidth
+    let preDesc = this.state.postText
+    let dataDesc = data.text
+    let _postText = ''
+    preDesc == '' ? _postText = dataDesc : _postText = preDesc
+
+    let preTitle = this.state.postTitle
+    let dataTitle = data.title
+    let _postTitle = ''
+    preTitle == '' ? _postTitle = dataTitle : _postTitle = preTitle
     const shareOptions = {
       title: data.title + " Valery Plata",
-      url: "http://myapp.shop/post/" + data.puid,
+      url: "https://play.google.com/store/apps/details?id=com.mardwin.valeryPlata",
       subject: "Instala la app de Valery Plata y disfruta de numerosas ofertas"
     }
     const BuyButton = (data.status === 'disponible') ?
@@ -93,42 +115,184 @@ export default class Timeline extends Component {
             </TouchableOpacity>
           : null
     const Status = (data.status === 'disponible') ? <Text style={{fontWeight:'bold',color:"green"}}>{data.status.toUpperCase()}</Text> : <Text style={{fontWeight:'bold',color:"red"}}>{data.status.toUpperCase()}</Text>
-    return (
-      <View style={styles.card}>
-        <View style={styles.postInfo}>
-          <Text style={styles.title}>{ data.title }</Text>
-        </View>
-        
-        <View style={styles.postInfo}>
-          
-          
-          { data.text ? <Text style={styles.info}>{ data.text }</Text> : null }
-          { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
-          
-          
-        </View>
-        <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
-          <Image
-            source={{ uri:data.image }}
-            resizeMode='contain'
-            style={{
-              height: height,
-              width: screenWidth,
-              alignSelf: 'center',
-            }}
-          />
-        </TouchableOpacity>
-        <View style={styles.postButtons}>
-          { BuyButton }
-          
-          <TouchableOpacity style={styles.button} onPress={()=>{ Share.open(shareOptions) }}>
-            <Icon name='md-share' size={30} color='#eee'/>
-          </TouchableOpacity>
-        </View>
-      </View>
-    )
-  }
+    if (this.props.appStore.user_type ==1) {
+        return (
+          <View style={styles.card}>
+            <View style={styles.postButtons}>
+              <TouchableOpacity style={styles.button} onPress={this._handleNewPost2}>
+                  <Icon name='md-checkmark-circle' size={20} color='#eee'/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={() => this.handleDisabled()}>
+                  <Icon name='md-trash' size={20} color='#eee'/>
+              </TouchableOpacity>
+            </View>
 
+            <Text style={styles.message}>{this.state.postStatus}</Text>
+              <View style={styles.titleContainer}>
+                <TextInput
+                style={styles.inputField}
+                defaultValue={data.title}
+                onChangeText={(postTitle) => this.setState({ 
+                  postTitle: postTitle,
+                  postText: _postText,
+                  price: data.price,
+                  createdAt: data.createdAt,
+                  text: data.text,
+                  puid: data.puid,
+                  username: data.username,
+                  uid: data.uid,
+                  image: data.image,
+                  imageHeight: data.imageHeight,
+                  imageWidth: data.imageWidth,
+
+                })}
+                underlineColorAndroid='transparent'
+               
+                />
+              </View>
+              
+              <View style={styles.inputContainer}>
+                  <TextInput
+                  onChangeText={(postText) => this.setState({ 
+                  postTitle: _postTitle,
+                  postText: postText,
+                  price: data.price,
+                  createdAt: data.createdAt,
+                  text: data.text,
+                  puid: data.puid,
+                  username: data.username,
+                  uid: data.uid,
+                  image: data.image,
+                  imageHeight: data.imageHeight,
+                  imageWidth: data.imageWidth,
+
+                })}
+                  multiline={true}
+                  style={styles.inputField}
+                  underlineColorAndroid='transparent'
+                  placeholder='Descripción (opcional)'
+                  defaultValue={ data.text }
+                  placeholderTextColor='rgba(0,0,0,.6)'
+                  />
+                </View>
+                
+            <View style={styles.postInfo}>
+              
+              
+               
+              { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
+            </View>
+            <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
+              <Image
+                source={{ uri:data.image }}
+                resizeMode='contain'
+                style={{
+                  height: height,
+                  width: screenWidth,
+                  alignSelf: 'center',
+                }}
+              />
+            </TouchableOpacity>
+            <View style={styles.postButtons}>
+              { BuyButton }
+              
+              <TouchableOpacity style={styles.button} onPress={()=>{ Share.open(shareOptions) }}>
+                <Icon name='md-share' size={30} color='#eee'/>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )
+      }
+      else{
+        return (
+          <View style={styles.card}>
+            <View style={styles.postInfo}>
+              <Text style={styles.title}>{ data.title }</Text>
+
+            </View>
+            
+            <View style={styles.postInfo}>
+              
+              
+              { data.text ? <Text style={styles.info}>{ data.text }</Text> : null }
+              { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
+            </View>
+            <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
+              <Image
+                source={{ uri:data.image }}
+                resizeMode='contain'
+                style={{
+                  height: height,
+                  width: screenWidth,
+                  alignSelf: 'center',
+                }}
+              />
+            </TouchableOpacity>
+            <View style={styles.postButtons}>
+              { BuyButton }
+              
+              <TouchableOpacity style={styles.button} onPress={()=>{ Share.open(shareOptions) }}>
+                <Icon name='md-share' size={30} color='#eee'/>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )
+      }
+  }
+  _handleNewPost2 = () => {
+    this.setState({
+      postStatus: 'Modificando producto...',
+      spinnervisible: true
+    })    
+          const prodId = this.state.puid
+          
+            const postData = {
+              createdAt: this.state.createdAt,
+              updatedAt: firebase.database.ServerValue.TIMESTAMP,
+              text: this.state.postText.replace(/(\r\n|\n|\r)/gm,""),
+              title: this.state.postTitle,
+              price: this.state.price,
+              username: this.state.username,
+              uid: this.state.uid,
+              status: "disponible",
+              clientId: "",
+              clientName: "",
+              new_messages: 0,
+              productType: 2,
+              puid: prodId,
+              image: this.state.image,
+              imageHeight: this.state.imageHeight,
+              imageWidth: this.state.imageWidth,
+              
+            }
+            let updates = {}
+            updates['/posts/' + prodId] = postData
+            
+            firebaseApp.database().ref().update(updates)
+            .then(() => {
+              this.setState({
+                              postStatus: 'Producto guardado correctamente!',
+                              postTitle: '',
+                              postPrice: '',
+                              postText: '',
+                              productType: null,
+                              imagePath: null,
+                              imageHeight: null,
+                              imageWidth: null,
+                              spinnervisible: false,
+                            })
+              setTimeout(() => {
+                this.setState({ postStatus: null })
+              }, 3000)
+            })
+
+            .catch(() => {
+              this.setState({ postStatus: 'Something went wrong!!!' })
+              this.setState({ spinnervisible: false })
+            })
+          
+
+  }
   _flagPost = (postData) => {
     console.log("--------> FLAG !!!!!!")
     console.log(postData)
@@ -269,6 +433,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: getColor()
   },
+  message: {
+    textAlign: 'center',
+  },
   postImage: {
     backgroundColor: '#eee',
   },
@@ -300,4 +467,38 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
+  titleContainer: {
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgba(255,255,255,.6)',
+    marginBottom: 10,
+    marginLeft: 10,
+    marginTop: 5,
+    padding: 5,
+    borderWidth: 1,
+    borderColor: '#e2e2e2',
+    borderRadius: 2,
+  },
+  inputField: {
+    flex: 1,
+    width: 300,
+    paddingLeft: 10,
+    paddingTop: 4,
+    paddingBottom: 4,
+    fontSize: 15,
+    color: '#666'
+  },
+  inputContainer: {
+    height: 140,
+    width: 300,
+    backgroundColor: 'rgba(255,255,255,.6)',
+    marginBottom: 10,
+    marginLeft: 10,
+    marginTop: 5,
+    padding: 5,
+    borderWidth: 1,
+    borderColor: '#e2e2e2',
+    borderRadius: 2,
+  },
+
 })

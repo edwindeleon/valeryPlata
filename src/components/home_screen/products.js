@@ -22,6 +22,7 @@ import moment from 'moment'
 import { observer,inject } from 'mobx-react/native'
 import { getColor } from '../config'
 import { firebaseApp } from '../../firebase'
+import firebase from 'firebase'
 
 
 const screenWidth = Dimensions.get('window').width
@@ -34,12 +35,23 @@ export default class Products extends Component {
       UIManager.setLayoutAnimationEnabledExperimental(true)
     }
     this.state = {
+      postStatus: null,
       counter: 1,
       isLoading: true,
       isEmpty: false,
       isFinished: false,
+      createdAt: '',
       postText: '',
       postTitle: '',
+      postPrice: '',
+      username: '',
+      uid: '',
+      puid: '',
+      productType: null,
+      image: '',
+      imageHeight: null,
+      imageWidth: null,
+
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
     }
     
@@ -85,11 +97,20 @@ export default class Products extends Component {
     //console.log("TIMELINE :::: _renderRow " + data.title)
     const timeString = moment(data.createdAt).fromNow()
     const height = screenWidth*data.imageHeight/data.imageWidth
-    let theId = data.puid
-    let elTexto = this.state.postText
+    //let theId = data.puid
+    let preDesc = this.state.postText
+    let dataDesc = data.text
+    let _postText = ''
+    preDesc == '' ? _postText = dataDesc : _postText = preDesc
+
+    let preTitle = this.state.postTitle
+    let dataTitle = data.title
+    let _postTitle = ''
+    preTitle == '' ? _postTitle = dataTitle : _postTitle = preTitle
+
     const shareOptions = {
       title: data.title + " Valery Plata",
-      url: "http://myapp.shop/post/" + data.puid,
+      url: "https://play.google.com/store/apps/details?id=com.mardwin.valeryPlata",
       subject: "Instala la app de Valery Plata y disfruta de numerosas ofertas"
     }
     const BuyButton = (data.status === 'disponible') ?
@@ -102,47 +123,63 @@ export default class Products extends Component {
         return (
           <View style={styles.card}>
             <View style={styles.postButtons}>
-              <TouchableOpacity style={styles.button} onPress={() => this.handleDisabled(theId)}>
-                  <Icon name='md-create' size={20} color='#eee'/>
+              <TouchableOpacity style={styles.button} onPress={this._handleNewPost2}>
+                  <Icon name='md-checkmark-circle' size={20} color='#eee'/>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.button} onPress={() => this.handleDisabled(theId)}>
+              <TouchableOpacity style={styles.button} onPress={() => this.handleDisabled()}>
                   <Icon name='md-trash' size={20} color='#eee'/>
               </TouchableOpacity>
             </View>
-            <View style={styles.postInfo}>
 
-              
-            </View>
-            
+            <Text style={styles.message}>{this.state.postStatus}</Text>
               <View style={styles.titleContainer}>
                 <TextInput
                 style={styles.inputField}
                 defaultValue={data.title}
-                onChangeText={(text) => this.setState({ postTitle: text })}
+                onChangeText={(postTitle) => this.setState({ 
+                  postTitle: postTitle,
+                  postText: _postText,
+                  price: data.price,
+                  createdAt: data.createdAt,
+                  text: data.text,
+                  puid: data.puid,
+                  username: data.username,
+                  uid: data.uid,
+                  image: data.image,
+                  imageHeight: data.imageHeight,
+                  imageWidth: data.imageWidth,
+
+                })}
                 underlineColorAndroid='transparent'
-                placeholder='Título'
-                placeholderTextColor='rgba(0,0,0,.6)'
-                onSubmitEditing={(event) => {
-                  this.refs.SecondInput.focus();
-                }}
+               
                 />
               </View>
               
               <View style={styles.inputContainer}>
-                  { data.text ? <TextInput
-                   ref= {(el) => { this.postText = el; }}
-                  onChangeText={(postText) => this.setState({postText})}
+                  <TextInput
+                  onChangeText={(postText) => this.setState({ 
+                  postTitle: _postTitle,
+                  postText: postText,
+                  price: data.price,
+                  createdAt: data.createdAt,
+                  text: data.text,
+                  puid: data.puid,
+                  username: data.username,
+                  uid: data.uid,
+                  image: data.image,
+                  imageHeight: data.imageHeight,
+                  imageWidth: data.imageWidth,
+
+                })}
                   multiline={true}
                   style={styles.inputField}
                   underlineColorAndroid='transparent'
                   placeholder='Descripción (opcional)'
                   defaultValue={ data.text }
                   placeholderTextColor='rgba(0,0,0,.6)'
-                  /> : null }
+                  />
                 </View>
-                <View style={styles.inputContainer}>
-                  <Text>{ elTexto }{data.puid}</Text>
-                </View>
+                
             <View style={styles.postInfo}>
               
               
@@ -207,6 +244,60 @@ export default class Products extends Component {
       }
   }
 
+   _handleNewPost2 = () => {
+    this.setState({
+      postStatus: 'Modificando producto...',
+      spinnervisible: true
+    })    
+          const prodId = this.state.puid
+          
+            const postData = {
+              createdAt: this.state.createdAt,
+              updatedAt: firebase.database.ServerValue.TIMESTAMP,
+              text: this.state.postText.replace(/(\r\n|\n|\r)/gm,""),
+              title: this.state.postTitle,
+              price: this.state.price,
+              username: this.state.username,
+              uid: this.state.uid,
+              status: "disponible",
+              clientId: "",
+              clientName: "",
+              new_messages: 0,
+              productType: 2,
+              puid: prodId,
+              image: this.state.image,
+              imageHeight: this.state.imageHeight,
+              imageWidth: this.state.imageWidth,
+              
+            }
+            let updates = {}
+            updates['/posts2/' + prodId] = postData
+            
+            firebaseApp.database().ref().update(updates)
+            .then(() => {
+              this.setState({
+                              postStatus: 'Producto guardado correctamente!',
+                              postTitle: '',
+                              postPrice: '',
+                              postText: '',
+                              productType: null,
+                              imagePath: null,
+                              imageHeight: null,
+                              imageWidth: null,
+                              spinnervisible: false,
+                            })
+              setTimeout(() => {
+                this.setState({ postStatus: null })
+              }, 3000)
+            })
+
+            .catch(() => {
+              this.setState({ postStatus: 'Something went wrong!!!' })
+              this.setState({ spinnervisible: false })
+            })
+          
+
+  }
 
   _flagPost = (postData) => {
 
@@ -349,6 +440,9 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     textAlign: 'center',
     color: getColor()
+  },
+  message: {
+    textAlign: 'center',
   },
   postImage: {
     backgroundColor: '#eee',
