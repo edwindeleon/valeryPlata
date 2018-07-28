@@ -202,6 +202,7 @@ export default class PushNot extends Component {
       if (this.state.postTitle.length > 0) {
           this.setState({ spinnervisible: true })
           const uid = this.props.appStore.user.uid
+          const newPostKey = firebaseApp.database().ref('push_notifications').push().key
             fetch('https://onesignal.com/api/v1/notifications',
             {
               method: 'POST',
@@ -221,6 +222,20 @@ export default class PushNot extends Component {
                 
               })
             })
+            .then((responseData) => {
+                console.log("Push POST:" + JSON.stringify(responseData));
+            })
+            .done()
+            console.log(this.state.postText);
+            const postData = {
+              createdAt: firebase.database.ServerValue.TIMESTAMP,
+              text: this.state.postText.replace(/(\r\n|\n|\r)/gm,""),
+              title: this.state.postTitle
+            }
+            let updates = {}
+            
+            updates['/push_notifications/' + newPostKey] = postData
+            firebaseApp.database().ref().update(updates)
             .then(() => {
               this.setState({
                               postStatus: 'Notificacion enviada correctamente!',

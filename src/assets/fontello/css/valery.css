@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'valery';
-  src: url('../font/valery.eot?52631083');
-  src: url('../font/valery.eot?52631083#iefix') format('embedded-opentype'),
-       url('../font/valery.woff2?52631083') format('woff2'),
-       url('../font/valery.woff?52631083') format('woff'),
-       url('../font/valery.ttf?52631083') format('truetype'),
-       url('../font/valery.svg?52631083#valery') format('svg');
+  src: url('../font/valery.eot?43117889');
+  src: url('../font/valery.eot?43117889#iefix') format('embedded-opentype'),
+       url('../font/valery.woff2?43117889') format('woff2'),
+       url('../font/valery.woff?43117889') format('woff'),
+       url('../font/valery.ttf?43117889') format('truetype'),
+       url('../font/valery.svg?43117889#valery') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'valery';
-    src: url('../font/valery.svg?52631083#valery') format('svg');
+    src: url('../font/valery.svg?43117889#valery') format('svg');
   }
 }
 */
@@ -63,4 +63,8 @@
 .icon-plus:before { content: '\e805'; } /* '' */
 .icon-user:before { content: '\e806'; } /* '' */
 .icon-users:before { content: '\e807'; } /* '' */
+.icon-bell:before { content: '\e808'; } /* '' */
+.icon-bell-alt:before { content: '\f0f3'; } /* '' */
+.icon-bell-off:before { content: '\f1f6'; } /* '' */
+.icon-bell-off-empty:before { content: '\f1f7'; } /* '' */
 .icon-user-o:before { content: '\f2c0'; } /* '' */
