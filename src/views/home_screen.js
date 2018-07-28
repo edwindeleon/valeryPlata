@@ -16,6 +16,7 @@ import Profile from '../components/home_screen/profile'
 import MyOrders from '../components/home_screen/myOrders'
 import PushNot from '../components/home_screen/myNotifications'
 import MyChats from '../components/home_screen/myChats'
+import UsersList from '../components/home_screen/usersList'
 import { firebaseApp } from '../firebase'
 import { Actions } from 'react-native-mobx'
 import { observer, inject } from 'mobx-react/native'
@@ -57,12 +58,7 @@ export default class HomeScreen extends Component {
     console.log("--------- HOME ---------");
     this.props.appStore.tracker.trackScreenView('Home')
     this.props.appStore.current_page = 'home'
-    this.props.appStore.current_puid = ''
-    
-
-    
-
-      
+    this.props.appStore.current_puid = ''    
         
   }
   componentDidMount() {
@@ -91,6 +87,7 @@ export default class HomeScreen extends Component {
             <CreateNew tabLabel="plus"/>
             <PushNot tabLabel="comment-alt"/>
             <MyOrders tabLabel="heart"/>
+            <UsersList tabLabel="users"/>
             <Profile tabLabel="user"/>
           </ScrollableTabView>
         

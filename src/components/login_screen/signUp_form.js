@@ -14,6 +14,7 @@ import {
   TouchableHighlight,
 } from 'react-native'
 import { firebaseApp } from '../../firebase'
+import firebase from 'firebase'
 import { getColor } from '../config'
 import * as Animatable from 'react-native-animatable'
 import { Actions } from 'react-native-mobx'
@@ -37,6 +38,7 @@ export default class SignUpForm extends Component {
       email: '',
       password: '',
       modalVisible: false,
+      usersNumber: 0
     }
   }
 
@@ -44,6 +46,17 @@ export default class SignUpForm extends Component {
     console.log("--------- SIGN UP --------- ")
     this.props.appStore.tracker.trackScreenView('SIGN UP')
     BackAndroid.addEventListener('backBtnPressed', this._handleBackBtnPress)
+
+    firebaseApp.database().ref(`users_count`).child(`counter`).on('value',
+    (snapshot) => {
+      let usersNumber = snapshot.val().counting
+      this.setState({
+        usersNumber: usersNumber
+      });
+      
+    });
+    
+    
   }
 
   componentDidUpdate() {
@@ -59,6 +72,7 @@ export default class SignUpForm extends Component {
   }
 
   render() {
+    
     const animation = this.state.init ? 'bounceInUp' : 'bounceOutDown'
 
     const errorMessage = this.state.errMsg ?
@@ -90,7 +104,9 @@ export default class SignUpForm extends Component {
             </ScrollView>
          </View>
         </Modal>
+        
         <View style={[styles.inputContainer, { marginBottom: 10 }]}>
+
           <TextInput
           style={styles.inputField}
           value={this.state.name}
@@ -150,7 +166,7 @@ export default class SignUpForm extends Component {
       animation={animation}
       style={styles.container}
       onAnimationEnd={this._handleAnimEnd}>
-        <Text style={styles.title}>Registrarse </Text>
+        <Text style={styles.title}>Registrarse</Text>
         {errorMessage}
         {signUpForm}
       </Animatable.View>
@@ -179,6 +195,10 @@ export default class SignUpForm extends Component {
           .then((user) => {
             firebaseApp.database().ref('usernameList').child(this.state.name.toLowerCase()).set(user.uid)
             user.updateProfile({displayName: this.state.name})
+            .then(() => {
+              const countNumber = this.state.usersNumber+1
+              firebaseApp.database().ref('users_count/counter/counting').set(countNumber)
+            })
             .then(() => {
               const uid = user.uid
               const username = user.displayName
