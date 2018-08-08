@@ -18,6 +18,8 @@ import PushNot from '../components/home_screen/myNotifications'
 import MyChats from '../components/home_screen/myChats'
 import UsersList from '../components/home_screen/usersList'
 import NotificationsList from '../components/home_screen/notificationsList'
+import UserChat from '../components/home_screen/userChat'
+import AdminUsersChat from '../components/home_screen/adminUsersChat'
 import { firebaseApp } from '../firebase'
 import { Actions } from 'react-native-mobx'
 import { observer, inject } from 'mobx-react/native'
@@ -86,9 +88,10 @@ export default class HomeScreen extends Component {
             <Timeline tabLabel="tags" />
             <Products tabLabel="diamond-1"/>
             <CreateNew tabLabel="plus"/>
-            <PushNot tabLabel="comment-alt"/>
+            <PushNot tabLabel="comment"/>
             <MyOrders tabLabel="heart"/>
             <NotificationsList tabLabel="bell-alt"/>
+            <AdminUsersChat tabLabel="comment-alt"/>
             <UsersList tabLabel="users"/>
             <Profile tabLabel="user"/>
           </ScrollableTabView>
@@ -114,6 +117,7 @@ export default class HomeScreen extends Component {
             <Products tabLabel="diamond-1"/>
             <MyOrders tabLabel="heart"/>
             <NotificationsList tabLabel="bell-alt"/>
+            <UserChat tabLabel="comment-alt"/>
             <Profile tabLabel="user"/>
           </ScrollableTabView>
         

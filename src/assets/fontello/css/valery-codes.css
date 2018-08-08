@@ -8,6 +8,7 @@
 .icon-user:before { content: '\e806'; } /* '' */
 .icon-users:before { content: '\e807'; } /* '' */
 .icon-bell:before { content: '\e808'; } /* '' */
+.icon-comment:before { content: '\e809'; } /* '' */
 .icon-bell-alt:before { content: '\f0f3'; } /* '' */
 .icon-bell-off:before { content: '\f1f6'; } /* '' */
 .icon-bell-off-empty:before { content: '\f1f7'; } /* '' */

@@ -9,6 +9,7 @@ import LoginScreen from './views/login_screen'
 import HomeScreen from './views/home_screen'
 import SettingScreen from './views/setting_screen'
 import ChatScreen from './views/chat_screen'
+import AdminStartedChat from './components/home_screen/adminStartedChat'
 
 import appStore from './store/AppStore'
 
@@ -64,6 +65,14 @@ class App extends Component {
           <Scene
             key="chat"
             component={ChatScreen}
+            //direction="vertical"
+            hideNavBar={false}
+            panHandlers={null}
+            duration={0}
+          />
+          <Scene
+            key="globalChat"
+            component={AdminStartedChat}
             //direction="vertical"
             hideNavBar={false}
             panHandlers={null}

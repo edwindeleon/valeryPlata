@@ -9,6 +9,7 @@ import {
   LayoutAnimation,
   Platform,
   UIManager,
+  
 } from 'react-native'
 import _ from 'lodash'
 import moment from 'moment'
@@ -18,6 +19,12 @@ import ModalPicker from 'react-native-modal-picker'
 import { getColor } from '../config'
 import { observer,inject } from 'mobx-react/native'
 import { Actions } from 'react-native-mobx'
+import call from 'react-native-phone-call'
+
+const args = {
+  number: '8299238238', // String value with the number to call
+  prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
+}
 
 
 @inject("appStore") @observer
@@ -84,20 +91,16 @@ export default class Profile extends Component {
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.titleTop}>{'ADMINISTRACION DE PRODUCTOS'}</Text>
-        <ListView
-          automaticallyAdjustContentInsets={true}
-          initialListSize={1}
-          dataSource={this.state.dataSource}
-          renderRow={this._renderRow}
-          renderFooter={this._renderFooter}
-          onEndReached={this._onEndReached}
-          onEndReachedThreshold={1}
-        />
+        <Text style={styles.titleTop}>{'SOBRE ESTA APLICACIóN'.toUpperCase()}</Text>
+        <Text>Diseño y Desarrollo Edwin De León </Text>
+        <TouchableOpacity onPress={this._llamar}><Text>829-923-8238</Text></TouchableOpacity>
+       
       </View>
     )
   }
-
+  _llamar = () => {
+    call(args).catch(console.error)
+  }
   _renderRow = (data) => {
     let index = 0;
     const options = [
@@ -183,7 +186,7 @@ export default class Profile extends Component {
     Actions.chat({ title:postData.title, puid:postData.puid })
   }
 
-  _userEdit = () => {
+  _user = () => {
     Actions.setting()
   }
 
