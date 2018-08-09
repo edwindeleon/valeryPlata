@@ -75,11 +75,7 @@ export default class Profile extends Component {
               {this.props.appStore.username}
             </Text>
           </View>
-          <View style={styles.profileCountsContainer}>
-            <Text style={styles.profileCounts}>
-              {this.props.appStore.post_count}
-            </Text>
-          </View>
+          
           <View style={styles.profileCountsContainer}>
             <TouchableOpacity onPress={this._userEdit}>
               <Icon name='md-settings' size={30} color='rgba(255,255,255,.9)'/>
@@ -92,9 +88,10 @@ export default class Profile extends Component {
           </View>
         </View>
         <Text style={styles.titleTop}>{'SOBRE ESTA APLICACIóN'.toUpperCase()}</Text>
-        <Text>Diseño y Desarrollo Edwin De León </Text>
-        <TouchableOpacity onPress={this._llamar}><Text>829-923-8238</Text></TouchableOpacity>
-       
+        <Text style={styles.copy}>Diseño y Desarrollo Edwin De León </Text>
+        <TouchableOpacity onPress={this._llamar}><Text style={styles.copyTel}>829-923-8238</Text></TouchableOpacity>
+        <Text style={styles.copy}>Joyería Valery Plata</Text>
+       <Text style={styles.copy}>V 1.1</Text>
       </View>
     )
   }
@@ -287,6 +284,22 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     fontSize: 15,
     fontWeight: '800',
+    textAlign: 'center',
+    color: getColor()
+  },
+  copy: {
+    marginTop: 10,
+    paddingBottom: 10,
+    fontSize: 12,
+    fontWeight: '300',
+    textAlign: 'center',
+    color: '#444'
+  },
+  copyTel: {
+    marginTop: 10,
+    paddingBottom: 10,
+    fontSize: 12,
+    fontWeight: '300',
     textAlign: 'center',
     color: getColor()
   },

@@ -17,7 +17,6 @@ const Comment = (props) =>
         <Image style={styles.avatar} source={require('../../assets/images/user_icon.png')} /> 
     }
     <Text style={styles.text}>{props.text}</Text>
-    <Text style={styles.text}>{props.userType}</Text>
   </View>
 
 const styles = StyleSheet.create({

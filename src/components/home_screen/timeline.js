@@ -35,6 +35,7 @@ export default class Timeline extends Component {
       UIManager.setLayoutAnimationEnabledExperimental(true)
     }
     this.state = {
+       postProps: {},
       counter: 1,
       isLoading: true,
       isEmpty: false,
@@ -111,7 +112,7 @@ export default class Timeline extends Component {
       subject: "Instala la app de Valery Plata y disfruta de numerosas ofertas"
     }
     const BuyButton = (data.status === 'disponible') ?
-            <TouchableOpacity style={styles.button} >
+            <TouchableOpacity style={styles.button} onPress={() => this._Ilike(theId)} >
               <Icon name='md-heart' size={30} color='#eee'/>
             </TouchableOpacity>
           : null
@@ -218,7 +219,7 @@ export default class Timeline extends Component {
               { data.text ? <Text style={styles.info}>{ data.text }</Text> : null }
               { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
             </View>
-            <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
+            <TouchableOpacity style={styles.postImage}>
               <Image
                 source={{ uri:data.image }}
                 resizeMode='contain'
@@ -354,8 +355,37 @@ export default class Timeline extends Component {
     Actions.chat({ title:postData.title, puid:postData.puid })
   }
 
-  _BuyNow = (postData) => {
-    Actions.chat({ title:postData.title, puid:postData.puid, wantToBuy:true })
+  _Ilike2 = (theId) => {
+      firebaseApp.database().ref('posts').child(theId).once('value',
+        (snapshot) => {
+          this.setState({
+                          postProps: snapshot.val()
+                        })
+      })
+       
+      firebaseApp.database().ref('user_orders/'+this.props.appStore.user.uid+'/posts').child(theId).set(this.state.postProps)
+    
+  }
+  _Ilike = (theId) => {
+      firebaseApp.database().ref('posts').child(theId).once('value',
+        (snapshot) => {
+          this.setState({
+                          postProps: snapshot.val()
+                        })
+      })
+       this.props.appStore.order_count = this.props.appStore.order_count + 1
+      firebaseApp.database().ref('users').child(this.props.appStore.user.uid).update({ order_count: this.props.appStore.order_count })
+      firebaseApp.database().ref('user_orders/'+this.props.appStore.user.uid+'/posts').child(theId).set(this.state.postProps).then(() => {
+        Alert.alert(
+          'Lista de Deseos',
+          'Agregado correctamente a su Lista de Deseos',
+          [
+            { text: 'Aceptar', onPress: () => {this._Ilike2(theId)}, style: 'cancel' }
+            
+          ]
+        )
+      })
+    
   }
 
   _onEndReached = () => {

@@ -9,6 +9,8 @@ import {
   LayoutAnimation,
   Platform,
   UIManager,
+  Image,
+  Dimensions
 } from 'react-native'
 import _ from 'lodash'
 import moment from 'moment'
@@ -100,11 +102,25 @@ export default class Profile extends Component {
   _renderRow = (data) => {
     const timeString = moment(data.updatedAt).fromNow()
     return (
-      <TouchableOpacity onPress={() => this._openChat(data)}>
+      <TouchableOpacity >
         <View style={styles.card}>
-          <Text style={styles.title}>{ data.title }</Text>
-          <Text style={styles.info}>{data.price}</Text>
-          <Text style={styles.info}>{timeString}</Text>
+          <View style={styles.postButtons}>
+            <View style={styles.middleBlock}>
+              <Image
+                  source={{ uri:data.image }}
+                  resizeMode='contain'
+                  style={{
+                    height: 200,
+                    width: 150,
+                  }}
+                />
+            </View>
+            <View style={styles.middleBlock}>
+              <Text style={styles.title}>{ data.title }</Text>
+              <Text style={styles.info}>{data.text}</Text>
+            </View>
+          </View>
+          
         </View>
       </TouchableOpacity>
     )
@@ -235,6 +251,18 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     textAlign: 'center',
     color: getColor()
+  },
+  postButtons: {
+    padding: 5,
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center',
+  },
+  middleBlock: {
+    flex: 3,
+    padding: 5,
+    margin: 6,
+    alignItems: 'center',
   },
   info: {
     padding: 3,
