@@ -184,7 +184,7 @@ export default class Timeline extends Component {
                
               { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
             </View>
-            <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
+            <TouchableOpacity style={styles.postImage} >
               <Image
                 source={{ uri:data.image }}
                 resizeMode='contain'
@@ -513,11 +513,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   titleContainer: {
+    flex: 1,
     height: 40,
-    width: 300,
     backgroundColor: 'rgba(255,255,255,.6)',
     marginBottom: 10,
     marginLeft: 10,
+    marginRight: 10,
     marginTop: 5,
     padding: 5,
     borderWidth: 1,
@@ -534,8 +535,8 @@ const styles = StyleSheet.create({
     color: '#666'
   },
   inputContainer: {
+    flex: 1,
     height: 140,
-    width: 300,
     backgroundColor: 'rgba(255,255,255,.6)',
     marginBottom: 10,
     marginLeft: 10,
@@ -544,6 +545,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#e2e2e2',
     borderRadius: 2,
+    marginRight: 10,
   },
 
 })

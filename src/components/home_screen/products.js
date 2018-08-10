@@ -35,6 +35,7 @@ export default class Products extends Component {
       UIManager.setLayoutAnimationEnabledExperimental(true)
     }
     this.state = {
+      postProps: {},
       postStatus: null,
       counter: 1,
       isLoading: true,
@@ -114,7 +115,7 @@ export default class Products extends Component {
       subject: "Instala la app de Valery Plata y disfruta de numerosas ofertas"
     }
     const BuyButton = (data.status === 'disponible') ?
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => this._Ilike(theId)}>
               <Icon name='md-heart' size={30} color='#eee'/>
             </TouchableOpacity>
           : null
@@ -186,7 +187,7 @@ export default class Products extends Component {
                
               { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
             </View>
-            <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
+            <TouchableOpacity style={styles.postImage} >
               <Image
                 source={{ uri:data.image }}
                 resizeMode='contain'
@@ -221,7 +222,7 @@ export default class Products extends Component {
               { data.text ? <Text style={styles.info}>{ data.text }</Text> : null }
               { data.price > 0 ? <Text style={styles.info}><Text style={styles.bold}>RD$: {data.price}</Text></Text> :<Text style={styles.info}><Text style={styles.bold}></Text></Text> }
             </View>
-            <TouchableOpacity style={styles.postImage} onPress={() => this._openChat(data)}>
+            <TouchableOpacity style={styles.postImage} >
               <Image
                 source={{ uri:data.image }}
                 resizeMode='contain'
@@ -359,10 +360,38 @@ export default class Products extends Component {
     Actions.chat({ title:postData.title, puid:postData.puid })
   }
 
-  _BuyNow = (postData) => {
-    Actions.chat({ title:postData.title, puid:postData.puid, wantToBuy:true })
+  _Ilike2 = (theId) => {
+      firebaseApp.database().ref('posts2').child(theId).once('value',
+        (snapshot) => {
+          this.setState({
+                          postProps: snapshot.val()
+                        })
+      })
+       
+      firebaseApp.database().ref('user_orders/'+this.props.appStore.user.uid+'/posts').child(theId).set(this.state.postProps)
+    
   }
-
+  _Ilike = (theId) => {
+      firebaseApp.database().ref('posts2').child(theId).once('value',
+        (snapshot) => {
+          this.setState({
+                          postProps: snapshot.val()
+                        })
+      })
+       this.props.appStore.order_count = this.props.appStore.order_count + 1
+      firebaseApp.database().ref('users').child(this.props.appStore.user.uid).update({ order_count: this.props.appStore.order_count })
+      firebaseApp.database().ref('user_orders/'+this.props.appStore.user.uid+'/posts').child(theId).set(this.state.postProps).then(() => {
+        Alert.alert(
+          'Lista de Deseos',
+          'Agregado correctamente a su Lista de Deseos',
+          [
+            { text: 'Aceptar', onPress: () => {this._Ilike2(theId)}, style: 'cancel' }
+            
+          ]
+        )
+      })
+    
+  }
   _onEndReached = () => {
     //console.log("TIMELINE ----> _onEndReached :+++:");
     if (!this.state.isEmpty && !this.state.isFinished && !this.state.isLoading) {
@@ -489,11 +518,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   titleContainer: {
+    flex: 1,
     height: 40,
-    width: 300,
     backgroundColor: 'rgba(255,255,255,.6)',
     marginBottom: 10,
     marginLeft: 10,
+    marginRight: 10,
     marginTop: 5,
     padding: 5,
     borderWidth: 1,
@@ -510,8 +540,8 @@ const styles = StyleSheet.create({
     color: '#666'
   },
   inputContainer: {
+    flex: 1,
     height: 140,
-    width: 300,
     backgroundColor: 'rgba(255,255,255,.6)',
     marginBottom: 10,
     marginLeft: 10,
@@ -520,6 +550,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#e2e2e2',
     borderRadius: 2,
+    marginRight: 10,
   },
-
 })
