@@ -160,7 +160,7 @@ export default class Profile extends Component {
     if (this.state.isEmpty) {
       return (
         <View style={styles.waitView}>
-          <Text>- Here will be the list of the item you bought -</Text>
+          <Text>Aun no hay productos marcados...-</Text>
         </View>
       )
     }

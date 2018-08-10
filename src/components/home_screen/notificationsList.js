@@ -191,7 +191,7 @@ export default class notificationsList extends Component {
     if (this.state.isEmpty) {
       return (
         <View style={styles.waitView}>
-          <Text>Nothing there yet.</Text>
+          <Text>No hay notificaciones aun...</Text>
         </View>
       )
     }
