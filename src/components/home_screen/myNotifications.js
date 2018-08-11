@@ -201,8 +201,8 @@ export default class PushNot extends Component {
     
       if (this.state.postTitle.length > 0) {
           this.setState({ spinnervisible: true })
-          const uid = this.props.appStore.user.uid
-          const newPostKey = firebaseApp.database().ref('push_notifications').push().key
+            const uid = this.props.appStore.user.uid
+            const newPostKey = firebaseApp.database().ref('push_notifications').push().key
             fetch('https://onesignal.com/api/v1/notifications',
             {
               method: 'POST',
@@ -250,6 +250,7 @@ export default class PushNot extends Component {
                 this.refs.scrollContent.scrollToPosition(0, 0, true)
               }, 1000)
             })
+          
             .catch(() => {
               this.setState({ postStatus: 'Something went wrong!!!' })
               this.setState({ spinnervisible: false })

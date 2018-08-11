@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -14,6 +15,7 @@
 		00E356F31AD99517003FC87E /* MyAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MyAppTests.m */; };
 		0916DA2A75934C6D907595D3 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18F547B016ED4D568510B5EB /* MaterialCommunityIcons.ttf */; };
 		09BBFE0996E64CDA8E458E3A /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D35AB44C41418E837F1D9A /* libRNFetchBlob.a */; };
+		0A1433D89CD147C582CFBBBF /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DEA7E1CA39A47E091795DC3 /* libRCTVideo.a */; };
 		0EB87C88720941BA92D6EA0B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82648939061E4C46AC9E7DCB /* FontAwesome.ttf */; };
 		1159A1E5BE9744D88976FA10 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8378DAB001747AC91CF6A80 /* libRNImagePicker.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -26,8 +28,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		23E3A637533B4403B87C786A /* valery.woff in Resources */ = {isa = PBXBuildFile; fileRef = A1944325A42D4CA7A1DF805C /* valery.woff */; };
 		28A2DCFFE2F14B6E90AA6F97 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A84039FD16493AA84B047F /* libRNVectorIcons.a */; };
 		2CA8DA92E1E841C0BB045B00 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DFD3FD3545C08C427352 /* MaterialIcons.ttf */; };
+		37B7F9E507A14649940C3976 /* valery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EC2A8DDD3F4C77A1740425 /* valery.ttf */; };
 		512A344408604EF2A2AF489A /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63407D2540C647DDB4FCF4E6 /* libCodePush.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		5FA92B285A6F4D118CFE3BDD /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D51E53A934694079B212495C /* Zocial.ttf */; };
@@ -35,7 +39,9 @@
 		6DDC2BA6A6764EB39EF65A76 /* libRCTOneSignal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA4D3C3C5C24B60903A151B /* libRCTOneSignal.a */; };
 		725C355634EC49700197309C /* libPods-MyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB768D16269DFA1412A34886 /* libPods-MyApp.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8B1782FD0E134216B9DC84E9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 227F21E1E3854D208197E0DA /* Feather.ttf */; };
 		8E9BCDE0A1484CE1ACDE8F72 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C136DE120AE34269A48E4AC8 /* EvilIcons.ttf */; };
+		B6E136D04E194894BE9585F5 /* valery.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 72E092930F564471A674485E /* valery.woff2 */; };
 		B738DA35E625491CA775415E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E20EAD155C71420C844DAADC /* libz.tbd */; };
 		B8EAD666A97C4C9A9B85AA56 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02C44F6B811646B197516839 /* Octicons.ttf */; };
 		BE56EB1AA7D145308432E2BE /* libRCTGoogleAnalyticsBridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C28448D96E44F78AD367C1 /* libRCTGoogleAnalyticsBridge.a */; };
@@ -47,11 +53,6 @@
 		F76765A91E2FD7BF00D56750 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76765A81E2FD7BF00D56750 /* CoreData.framework */; };
 		F76765AB1E2FD7CB00D56750 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76765AA1E2FD7CB00D56750 /* SystemConfiguration.framework */; };
 		F76766071E30303E00D56750 /* fishing.caf in Resources */ = {isa = PBXBuildFile; fileRef = F76766061E30303E00D56750 /* fishing.caf */; };
-		37B7F9E507A14649940C3976 /* valery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EC2A8DDD3F4C77A1740425 /* valery.ttf */; };
-		0A1433D89CD147C582CFBBBF /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DEA7E1CA39A47E091795DC3 /* libRCTVideo.a */; };
-		23E3A637533B4403B87C786A /* valery.woff in Resources */ = {isa = PBXBuildFile; fileRef = A1944325A42D4CA7A1DF805C /* valery.woff */; };
-		B6E136D04E194894BE9585F5 /* valery.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 72E092930F564471A674485E /* valery.woff2 */; };
-		8B1782FD0E134216B9DC84E9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 227F21E1E3854D208197E0DA /* Feather.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,13 +296,14 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* MyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* ValeryPlataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValeryPlataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MyAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAppTests.m; sourceTree = "<group>"; };
 		02C44F6B811646B197516839 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		04EC2A8DDD3F4C77A1740425 /* valery.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = valery.ttf; path = ../src/assets/fontello/font/valery.ttf; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* ValeryPlata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ValeryPlata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MyApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MyApp/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -311,16 +313,20 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		18F547B016ED4D568510B5EB /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		2250B303BDDB4E2681AF543F /* RCTGoogleAnalyticsBridge.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTGoogleAnalyticsBridge.xcodeproj; path = "../node_modules/react-native-google-analytics-bridge/ios/RCTGoogleAnalyticsBridge/RCTGoogleAnalyticsBridge.xcodeproj"; sourceTree = "<group>"; };
+		227F21E1E3854D208197E0DA /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		3176C445F8C14F80BEEA69C4 /* CodePush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		3616BC1054604480ABB5BD3A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		4552F3055E8645B4B7D4162F /* RNShare.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNShare.xcodeproj; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; };
 		4D00DFD3FD3545C08C427352 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		54BE2620DAA444B3931E6C47 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
+		5DEA7E1CA39A47E091795DC3 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		5EA4D3C3C5C24B60903A151B /* libRCTOneSignal.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOneSignal.a; sourceTree = "<group>"; };
 		63407D2540C647DDB4FCF4E6 /* libCodePush.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libCodePush.a; sourceTree = "<group>"; };
 		690EB57962A9424993C6F4F3 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		72E092930F564471A674485E /* valery.woff2 */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = valery.woff2; path = ../src/assets/fontello/font/valery.woff2; sourceTree = "<group>"; };
 		74A84039FD16493AA84B047F /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		77AFC9ECCE6D404D8CC7AE43 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7BA7E92C359EDB8A0CB7B8EB /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		82648939061E4C46AC9E7DCB /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
@@ -328,6 +334,7 @@
 		858A6F8ED64441BD83769496 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		88D35AB44C41418E837F1D9A /* libRNFetchBlob.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFetchBlob.a; sourceTree = "<group>"; };
 		9E182512812F4795BB1DB1F0 /* libRNShare.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNShare.a; sourceTree = "<group>"; };
+		A1944325A42D4CA7A1DF805C /* valery.woff */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = valery.woff; path = ../src/assets/fontello/font/valery.woff; sourceTree = "<group>"; };
 		C1096C7E6AE14670ACF29E4A /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		C136DE120AE34269A48E4AC8 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		C6C28448D96E44F78AD367C1 /* libRCTGoogleAnalyticsBridge.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTGoogleAnalyticsBridge.a; sourceTree = "<group>"; };
@@ -345,12 +352,6 @@
 		F76765AA1E2FD7CB00D56750 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F76766061E30303E00D56750 /* fishing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fishing.caf; sourceTree = "<group>"; };
 		FFC542EE5FF84276BA0B444F /* RCTOneSignal.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOneSignal.xcodeproj; path = "../node_modules/react-native-onesignal/ios/RCTOneSignal.xcodeproj"; sourceTree = "<group>"; };
-		04EC2A8DDD3F4C77A1740425 /* valery.ttf */ = {isa = PBXFileReference; name = "valery.ttf"; path = "../src/assets/fontello/font/valery.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		77AFC9ECCE6D404D8CC7AE43 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; name = "RCTVideo.xcodeproj"; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		5DEA7E1CA39A47E091795DC3 /* libRCTVideo.a */ = {isa = PBXFileReference; name = "libRCTVideo.a"; path = "libRCTVideo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		A1944325A42D4CA7A1DF805C /* valery.woff */ = {isa = PBXFileReference; name = "valery.woff"; path = "../src/assets/fontello/font/valery.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		72E092930F564471A674485E /* valery.woff2 */ = {isa = PBXFileReference; name = "valery.woff2"; path = "../src/assets/fontello/font/valery.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		227F21E1E3854D208197E0DA /* Feather.ttf */ = {isa = PBXFileReference; name = "Feather.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,12 +439,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* MyAppTests */ = {
+		00E356EF1AD99517003FC87E /* ValeryPlataTests */ = {
 			isa = PBXGroup;
 			children = (
 				00E356F21AD99517003FC87E /* MyAppTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
+			name = ValeryPlataTests;
 			path = MyAppTests;
 			sourceTree = "<group>";
 		};
@@ -473,7 +475,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* MyApp */ = {
+		13B07FAE1A68108700A75B9A /* ValeryPlata */ = {
 			isa = PBXGroup;
 			children = (
 				F738E34A1E2F1A53005CF6BD /* MyApp.entitlements */,
@@ -485,7 +487,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = MyApp;
+			name = ValeryPlata;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -513,6 +515,21 @@
 				E20EAD155C71420C844DAADC /* libz.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4628EF14211D39460066928C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				88D35AB44C41418E837F1D9A /* libRNFetchBlob.a */,
+				E8378DAB001747AC91CF6A80 /* libRNImagePicker.a */,
+				9E182512812F4795BB1DB1F0 /* libRNShare.a */,
+				74A84039FD16493AA84B047F /* libRNVectorIcons.a */,
+				5EA4D3C3C5C24B60903A151B /* libRCTOneSignal.a */,
+				C6C28448D96E44F78AD367C1 /* libRCTGoogleAnalyticsBridge.a */,
+				63407D2540C647DDB4FCF4E6 /* libCodePush.a */,
+				5DEA7E1CA39A47E091795DC3 /* libRCTVideo.a */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -572,13 +589,14 @@
 			isa = PBXGroup;
 			children = (
 				F76766061E30303E00D56750 /* fishing.caf */,
-				13B07FAE1A68108700A75B9A /* MyApp */,
+				13B07FAE1A68108700A75B9A /* ValeryPlata */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* MyAppTests */,
+				00E356EF1AD99517003FC87E /* ValeryPlataTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				1FC4C2E600C54CFA9CA227D6 /* Frameworks */,
 				D56613D764CB4F17931B7F08 /* Resources */,
 				F4641C494F2BDDA917056503 /* Pods */,
+				4628EF14211D39460066928C /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -587,8 +605,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* MyApp.app */,
-				00E356EE1AD99517003FC87E /* MyAppTests.xctest */,
+				13B07F961A680F5B00A75B9A /* ValeryPlata.app */,
+				00E356EE1AD99517003FC87E /* ValeryPlataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -683,9 +701,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* MyAppTests */ = {
+		00E356ED1AD99517003FC87E /* ValeryPlataTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MyAppTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ValeryPlataTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -696,14 +714,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = MyAppTests;
+			name = ValeryPlataTests;
 			productName = MyAppTests;
-			productReference = 00E356EE1AD99517003FC87E /* MyAppTests.xctest */;
+			productReference = 00E356EE1AD99517003FC87E /* ValeryPlataTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* MyApp */ = {
+		13B07F861A680F5B00A75B9A /* ValeryPlata */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyApp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ValeryPlata" */;
 			buildPhases = (
 				A5C17CBA998A07D51892B8CB /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -717,9 +735,9 @@
 			);
 			dependencies = (
 			);
-			name = MyApp;
+			name = ValeryPlata;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* MyApp.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* ValeryPlata.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -749,7 +767,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MyApp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ValeryPlata" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -836,8 +854,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* MyApp */,
-				00E356ED1AD99517003FC87E /* MyAppTests */,
+				13B07F861A680F5B00A75B9A /* ValeryPlata */,
+				00E356ED1AD99517003FC87E /* ValeryPlataTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1189,7 +1207,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* MyApp */;
+			target = 13B07F861A680F5B00A75B9A /* ValeryPlata */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1224,7 +1242,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyApp.app/MyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ValeryPlata.app/ValeryPlata";
 			};
 			name = Debug;
 		};
@@ -1242,7 +1260,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyApp.app/MyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ValeryPlata.app/ValeryPlata";
 			};
 			name = Release;
 		};
@@ -1266,8 +1284,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.jsapp.myapp;
-				PRODUCT_NAME = MyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mardwin.valeryPlata;
+				PRODUCT_NAME = ValeryPlata;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1291,8 +1309,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.jsapp.myapp;
-				PRODUCT_NAME = MyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mardwin.valeryPlata;
+				PRODUCT_NAME = ValeryPlata;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1376,7 +1394,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MyAppTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ValeryPlataTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1385,7 +1403,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyApp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ValeryPlata" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1394,7 +1412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MyApp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ValeryPlata" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

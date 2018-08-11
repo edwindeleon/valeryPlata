@@ -133,7 +133,7 @@ export default class Timeline extends Component {
             <TouchableOpacity style={styles.button2} onPress={() => this._openChat(data)}>
               <View style={styles.postInfo}>
                 <Text style={styles.title}>{ data.username }</Text>
-                <Text style={styles.title}>{ data.uid }</Text>
+                <Text style={styles.title}>{ data.email }</Text>
               </View>
             </TouchableOpacity>
            

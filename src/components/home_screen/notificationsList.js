@@ -36,7 +36,7 @@ export default class notificationsList extends Component {
       UIManager.setLayoutAnimationEnabledExperimental(true)
     }
     this.state = {
-      counter: 1,
+      counter: 5,
       createdAt: '',
       postText: '',
       postTitle: '',

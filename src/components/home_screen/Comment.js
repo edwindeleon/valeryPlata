@@ -26,11 +26,13 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 5,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'flex-start'
   },
   text: {
     marginLeft: 10,
-    fontSize: 16
+    fontSize: 16,
+    marginRight:10,
+    paddingRight: 10
   },
   avatar: {
     width: AVATAR_SIZE,

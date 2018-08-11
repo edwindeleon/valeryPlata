@@ -268,7 +268,7 @@ export default class CreateNew extends Component {
                 //data: {"puid": newPostKey},
                 big_picture: url,
                 ios_sound: "fishing.caf",
-                contents: {"en": " Nueva oferta: RD$: "+this.state.postTitle},
+                contents: {"en": " Nueva oferta: "+this.state.postTitle},
                 //filters: [{"field":"tag","key":"username","relation":"=","value":"Herve"}],
               })
             })

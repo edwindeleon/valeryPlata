@@ -26,6 +26,10 @@ const args = {
   prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
 }
 
+const args2 = {
+  number: '8095379837', // String value with the number to call
+  prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
+}
 
 @inject("appStore") @observer
 export default class Profile extends Component {
@@ -88,15 +92,21 @@ export default class Profile extends Component {
           </View>
         </View>
         <Text style={styles.titleTop}>{'SOBRE ESTA APLICACIóN'.toUpperCase()}</Text>
-        <Text style={styles.copy}>Diseño y Desarrollo Edwin De León </Text>
+        
+        <Text style={styles.copy}>Joyería Valery Plata </Text>
+        <TouchableOpacity onPress={this._llamar}><Text style={styles.copyTel}>809-537-9837</Text></TouchableOpacity>
+       <Text style={styles.copy}>V 1.2</Text>
+
+       <Text style={styles.copy}>Diseño y Desarrollo Edwin De León </Text>
         <TouchableOpacity onPress={this._llamar}><Text style={styles.copyTel}>829-923-8238</Text></TouchableOpacity>
-        <Text style={styles.copy}>Joyería Valery Plata</Text>
-       <Text style={styles.copy}>V 1.1</Text>
       </View>
     )
   }
   _llamar = () => {
     call(args).catch(console.error)
+  }
+  _llamar2 = () => {
+    call(args2).catch(console.error)
   }
   _renderRow = (data) => {
     let index = 0;
@@ -129,6 +139,9 @@ export default class Profile extends Component {
     )
   }
 
+  _userEdit = () => {
+    Actions.setting()
+  }
   _changeStatus = (option, postData) => {
     console.log("NEW STATUS: " + option.label)
     firebaseApp.database().ref('posts').child(postData.puid).update( { status:option.label } )

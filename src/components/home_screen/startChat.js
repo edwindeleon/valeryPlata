@@ -98,10 +98,12 @@ export default class StartChat extends Component {
           
           const uid = this.props.appStore.user.uid
           const username = this.props.appStore.user.displayName
+          const email = this.props.appStore.user.email
           const newPostKey = firebaseApp.database().ref('global_chats').push().key
             const postData = {
               username: username,
               uid: uid,
+              email: email,
               createdAt: firebase.database.ServerValue.TIMESTAMP,
               updatedAt: firebase.database.ServerValue.TIMESTAMP,
               status: "disponible",
