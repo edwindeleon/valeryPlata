@@ -230,9 +230,8 @@ export default class ChatScreen extends Component {
               {
                 method: 'POST',
                 headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json',
-                  'Authorization': this.props.appStore.onesignal_api_key,
+                  'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': 'Basic '+this.props.appStore.onesignal_api_key,
                 },
                 body: JSON.stringify(
                 {
@@ -304,9 +303,8 @@ export default class ChatScreen extends Component {
               {
                 method: 'POST',
                 headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json',
-                  'Authorization': this.props.appStore.onesignal_api_key,
+                  'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': 'Basic '+this.props.appStore.onesignal_api_key,
                 },
                 body: JSON.stringify(
                 {

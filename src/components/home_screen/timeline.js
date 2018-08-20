@@ -132,6 +132,7 @@ export default class Timeline extends Component {
             <Text style={styles.message}>{this.state.postStatus}</Text>
               <View style={styles.titleContainer}>
                 <TextInput
+                selectable={true}
                 style={styles.inputField}
                 defaultValue={data.title}
                 onChangeText={(postTitle) => this.setState({ 

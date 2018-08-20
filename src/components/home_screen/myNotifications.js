@@ -18,8 +18,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Spinner from 'react-native-loading-spinner-overlay'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { getColor } from '../config'
-import { firebaseApp } from '../../firebase'
 import firebase from 'firebase'
+import { firebaseApp } from '../../firebase'
 import { observer,inject } from 'mobx-react/native'
 
 
@@ -207,9 +207,8 @@ export default class PushNot extends Component {
             {
               method: 'POST',
               headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': this.props.appStore.onesignal_api_key,
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': 'Basic '+this.props.appStore.onesignal_api_key,
               },
               body: JSON.stringify(
               {
@@ -218,7 +217,7 @@ export default class PushNot extends Component {
                 headings: {"en": "Valery Plata"},
                 android_sound: "fishing",
                 ios_sound: "fishing.caf",
-                contents: {"en": this.state.postTitle + "...\n" + this.state.postText},
+                contents: {"en":" "+this.state.postTitle+"...\n"+this.state.postText},
                 
               })
             })

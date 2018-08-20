@@ -92,12 +92,13 @@ export default class Profile extends Component {
           </View>
         </View>
         <Text style={styles.titleTop}>{'SOBRE ESTA APLICACIóN'.toUpperCase()}</Text>
-        
+        <Text style={styles.copy}>V 1.3</Text>
         <Text style={styles.copy}>Joyería Valery Plata </Text>
+        <Text style={styles.copy2}>Av. 27 de Febrero casi esq. Nuñez de Cáceres, Plaza Dominica</Text>
         <TouchableOpacity onPress={this._llamar}><Text style={styles.copyTel}>809-537-9837</Text></TouchableOpacity>
-       <Text style={styles.copy}>V 1.2</Text>
+       
 
-       <Text style={styles.copy}>Diseño y Desarrollo Edwin De León </Text>
+       <Text style={styles.copy}>Diseño y Desarrollo de la App: Edwin De León </Text>
         <TouchableOpacity onPress={this._llamar}><Text style={styles.copyTel}>829-923-8238</Text></TouchableOpacity>
       </View>
     )
@@ -302,14 +303,22 @@ const styles = StyleSheet.create({
   },
   copy: {
     marginTop: 10,
-    paddingBottom: 10,
+    paddingBottom: 0,
+    fontSize: 12,
+    fontWeight: '300',
+    textAlign: 'center',
+    color: '#444'
+  },
+  copy2: {
+    marginTop: 0,
+    paddingBottom: 0,
     fontSize: 12,
     fontWeight: '300',
     textAlign: 'center',
     color: '#444'
   },
   copyTel: {
-    marginTop: 10,
+    marginTop: 5,
     paddingBottom: 10,
     fontSize: 12,
     fontWeight: '300',

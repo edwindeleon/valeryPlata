@@ -34,7 +34,7 @@ export default class InitialView extends Component {
       style={styles.container}
       delay={this.props.animDelay}
       onAnimationEnd={this._handleAnimEnd.bind(this)}>
-        <Text style={styles.version}>v1.1</Text>
+        
         <View style={styles.btnBox}>
           <TouchableOpacity onPress={this._handleSignInPress.bind(this)}>
             <View style={styles.btnContainer}>

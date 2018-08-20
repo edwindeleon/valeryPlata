@@ -1,11 +1,11 @@
 {
 	"name": "valeryPlata",
-	"version": "0.0.1",
+	"version": "1.3",
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest",
-		"ios": "open ios/MyApp.xcworkspace"
+		"ios": "open ios/valeryPlata.xcworkspace"
 	},
 	"rnpm": {
 		"assets": [
@@ -19,10 +19,10 @@
 		"mobx-react": "^4.1.0",
 		"moment": "^2.17.1",
 		"react": "~15.4.0-rc.4",
-		"react-native": "0.41.0",
+		"react-native": "0.40.0",
 		"react-native-animatable": "^1.1.0",
 		"react-native-code-push": "1.17.0-beta",
-		"react-native-fetch-blob": "0.10.2-beta.8",
+		"react-native-fetch-blob": "^0.10.8",
 		"react-native-gifted-chat": "0.1.1",
 		"react-native-google-analytics-bridge": "^5.0.0",
 		"react-native-image-picker": "^0.25.1",
@@ -35,7 +35,7 @@
 		"react-native-phone-call": "^1.0.7",
 		"react-native-scrollable-tab-view": "^0.7.1",
 		"react-native-share": "1.0.19",
-		"react-native-vector-icons": "^4.6.0"
+		"react-native-vector-icons": "^4.0.0"
 	},
 	"devDependencies": {
 		"babel-jest": "18.0.0",
