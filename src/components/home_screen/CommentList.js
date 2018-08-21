@@ -21,7 +21,7 @@ export default class CommentList extends Component {
 
   componentDidMount() {
     this.updateDataSource(this.props.comments)
-    this.refs.ListView_Reference.scrollToEnd({animated: true})
+    
 
     
   }
@@ -29,27 +29,22 @@ export default class CommentList extends Component {
   componentWillReceiveProps(newProps) {
     if (newProps.comments !== this.props.comments) {
       this.updateDataSource(newProps.comments)
-      this.refs.ListView_Reference.scrollToEnd({animated: true})
+      
       
     }
-    this.refs.ListView_Reference.scrollToEnd({animated: true})
+    
   }
 
   updateDataSource = (data) => {
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(data)
     })
-    this.refs.ListView_Reference.scrollToEnd({animated: true})
+    
   }
  componentDidUpdate(prevProps, prevState, snapshot){
-  this.refs.ListView_Reference.scrollToEnd({animated: true});
+  
  }
 
- GoTo_bottom_function =()=>{
-
-    this.refs.ListView_Reference.scrollToEnd({animated: true});
-
- }
  
 render() {
  

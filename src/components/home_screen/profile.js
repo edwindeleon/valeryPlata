@@ -95,7 +95,7 @@ export default class Profile extends Component {
         <Text style={styles.copy}>V 1.3</Text>
         <Text style={styles.copy}>Joyería Valery Plata </Text>
         <Text style={styles.copy2}>Av. 27 de Febrero casi esq. Nuñez de Cáceres, Plaza Dominica</Text>
-        <TouchableOpacity onPress={this._llamar}><Text style={styles.copyTel}>809-537-9837</Text></TouchableOpacity>
+        <TouchableOpacity onPress={this._llamar2}><Text style={styles.copyTel}>809-537-9837</Text></TouchableOpacity>
        
 
        <Text style={styles.copy}>Diseño y Desarrollo de la App: Edwin De León </Text>

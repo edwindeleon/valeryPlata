@@ -27,48 +27,17 @@ const Blob = RNFetchBlob.polyfill.Blob
 const fs = RNFetchBlob.fs
 window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
 window.Blob = Blob
-
 const screenWidth = Dimensions.get('window').width
-
-const uploadImage = (uri, imageName, mime = 'image/jpg') => {
-  return new Promise((resolve, reject) => {
-    const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
-      let uploadBlob = null
-      const imageRef = firebaseApp.storage().ref('posts').child(imageName)
-      fs.readFile(uploadUri, 'base64')
-      .then((data) => {
-        return Blob.build(data, { type: `${mime};BASE64` })
-      })
-      .then((blob) => {
-        uploadBlob = blob
-        return imageRef.put(blob, { contentType: mime })
-      })
-      .then(() => {
-        uploadBlob.close()
-        return imageRef.getDownloadURL()
-      })
-      .then((url) => {
-        resolve(url)
-      })
-      .catch((error) => {
-        reject(error)
-      })
-  })
-}
 
 @inject("appStore") @observer
 export default class PushNot extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      postStatus: null,
+      postStatus: '',
       postText: '',
       postTitle: '',
       postPrice: '',
-      productType: null,
-      imagePath: null,
-      imageHeight: null,
-      imageWidth: null,
       spinnervisible: false,
     }
     if (Platform.OS === 'android') {
@@ -77,32 +46,14 @@ export default class PushNot extends Component {
   }
 
   componentDidUpdate() {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
+   
   }
 
   componentDidMount() {
   }
 
   render() {
-    const height = ((screenWidth-40)*this.state.imageHeight/this.state.imageWidth)
-    const photo = this.state.imagePath ?
-      <View style={{ flex:1, }}>
-        <Image
-          source={{ uri:this.state.imagePath }}
-          resizeMode='contain'
-          resizeMethod='scale'
-          style={{
-            height: height,
-            width: screenWidth-40,
-            alignSelf: 'center',
-            marginBottom: 10,
-          }}
-        />
-      </View>
-     :
-       <View style={{ flex:1, marginBottom: 10,}}>
-         <Text></Text>
-       </View>
+    
     return (
       <View style={styles.container}>
         <Spinner visible={this.state.spinnervisible} />
@@ -150,50 +101,8 @@ export default class PushNot extends Component {
         </View>
     )
   }
-  _selectPicture = () => {
-    const cam_options = {
-      mediaType: 'photo',
-      maxWidth: 600,
-      maxHeight: 600,
-      quality: 1,
-      noData: true,
-    };
-    ImagePicker.launchImageLibrary(cam_options, (response) => {
-      if (response.didCancel) {
-      }
-      else if (response.error) {
-      }
-      else {
-        this.setState({
-          imagePath: response.uri,
-          imageHeight: response.height,
-          imageWidth: response.width,
-        })
-      }
-    })
-  }
-  _takePicture = () => {
-    const cam_options = {
-      mediaType: 'photo',
-      maxWidth: 600,
-      maxHeight: 600,
-      quality: 1,
-      noData: true,
-    };
-    ImagePicker.launchCamera(cam_options, (response) => {
-      if (response.didCancel) {
-      }
-      else if (response.error) {
-      }
-      else {
-        this.setState({
-          imagePath: response.uri,
-          imageHeight: response.height,
-          imageWidth: response.width,
-        })
-      }
-    })
-  }
+
+
  _handleNewPost = () => {
     this.setState({
       postStatus: 'Enviando notificacion...',
@@ -243,15 +152,12 @@ export default class PushNot extends Component {
                               spinnervisible: false,
                             })
               setTimeout(() => {
-                this.setState({ postStatus: null })
+                this.setState({ postStatus: '' })
               }, 3000)
-              setTimeout(() => {
-                this.refs.scrollContent.scrollToPosition(0, 0, true)
-              }, 1000)
             })
           
             .catch(() => {
-              this.setState({ postStatus: 'Something went wrong!!!' })
+              this.setState({ postStatus: 'Algo ha salido mal, vuelve a intentarlo!!!' })
               this.setState({ spinnervisible: false })
             })
           .catch(error => {
