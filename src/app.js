@@ -94,4 +94,5 @@ class App extends Component {
 
 //export default App
 //export default App = codePush({ updateDialog: true, installMode: codePush.InstallMode.IMMEDIATE })(App)
-export default App = codePush()(App)
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+export default App = codePush(codePushOptions)(App)

@@ -46,7 +46,7 @@ export default class PushNot extends Component {
   }
 
   componentDidUpdate() {
-   
+   LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
   }
 
   componentDidMount() {
@@ -79,13 +79,12 @@ export default class PushNot extends Component {
               
               <View style={styles.inputContainer}>
                 <TextInput
-                ref='ThirdInput'
                 multiline={true}
                 style={styles.inputField}
                 underlineColorAndroid='transparent'
                 placeholder='Mensaje'
                 value={this.state.postText}
-                onChangeText={(text) => this.setState({ postText: text })}
+                onChangeText={(mensajeText) => this.setState({ postText: mensajeText })}
                 placeholderTextColor='rgba(0,0,0,.6)'
                 />
               </View>
@@ -138,7 +137,7 @@ export default class PushNot extends Component {
             const postData = {
               createdAt: firebase.database.ServerValue.TIMESTAMP,
               text: this.state.postText.replace(/(\r\n|\n|\r)/gm,""),
-              title: this.state.postTitle
+              title: this.state.postTitle,
             }
             let updates = {}
             
@@ -153,17 +152,13 @@ export default class PushNot extends Component {
                             })
               setTimeout(() => {
                 this.setState({ postStatus: '' })
-              }, 3000)
+              }, 5000)
             })
-          
-            .catch(() => {
-              this.setState({ postStatus: 'Algo ha salido mal, vuelve a intentarlo!!!' })
-              this.setState({ spinnervisible: false })
-            })
-          .catch(error => {
+            .catch(error => {
             console.log(error)
             this.setState({ spinnervisible: false })
-          }) 
+          })
+           
       } else {
         this.setState({ postStatus: 'Por favor introduzca título' })
       }
