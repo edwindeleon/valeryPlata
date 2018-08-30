@@ -57,15 +57,13 @@ const uploadImage = (uri, imageName, mime = 'image/jpg') => {
 }
 
 @inject("appStore") @observer
-export default class CreateNew extends Component {
+export default class AdminSendNot extends Component {
   constructor(props) {
     super(props)
     this.state = {
       postStatus: null,
       postText: '',
       postTitle: '',
-      postPrice: '',
-      productType: null,
       imagePath: null,
       imageHeight: null,
       imageWidth: null,
@@ -81,6 +79,9 @@ export default class CreateNew extends Component {
   }
 
   componentDidMount() {
+    this.setState({
+      imagePath: 'https://firebasestorage.googleapis.com/v0/b/joyeria-valery.appspot.com/o/images%2Fportada-valery-plata.png?alt=media&token=cb455d75-8712-45f0-a60a-69235693e483',
+    })
   }
 
   render() {
@@ -108,8 +109,9 @@ export default class CreateNew extends Component {
         <Spinner visible={this.state.spinnervisible} />
           <KeyboardAwareScrollView ref='scrollContent'>
             <View style={styles.divider}>
-              <Text style={styles.title}>{'SUBIR NUEVO PRODUCTO'}</Text>
+              <Text style={styles.title}>{'ENVIAR NOTIFICACION PUSH'}</Text>
               { photo }
+              
               <TouchableOpacity style={styles.btnAdd} onPress={this._takePicture}>
                 <Icon
                   name={'md-camera'}
@@ -125,6 +127,7 @@ export default class CreateNew extends Component {
                 />
               </TouchableOpacity>
               <Text style={styles.message}>{this.state.postStatus}</Text>
+              
               <View style={styles.titleContainer}>
                 <TextInput
                 style={styles.inputField}
@@ -139,48 +142,19 @@ export default class CreateNew extends Component {
                 }}
                 />
               </View>
-              <View style={styles.titleContainer}>
-                <TextInput
-                ref='SecondInput'
-                maxLength={34}
-                style={styles.inputField}
-                value={this.state.postPrice}
-                onChangeText={(text) => this.setState({ postPrice: text })}
-                underlineColorAndroid='transparent'
-                placeholder='Precio RD$'
-                placeholderTextColor='rgba(0,0,0,.6)'
-                onSubmitEditing={(event) => {
-                  this.refs.ThirdInput.focus();
-                }}
-                />
-              </View>
-              <View style={styles.titleContainer}>
-                <Picker
-                  selectedValue={this.state.productType}
-                  mode='dropdown'
-                  ref='productType'
-                  prompt='Tipo de producto'
-                  style={styles.inputField}
-                  
-                  onValueChange={(itemValue, itemIndex) => this.setState({productType: itemValue})}>
-                  <Picker.Item label="Seleccione tipo de producto" value="0" />
-                  <Picker.Item style={styles.inputField} label="Oferta" value="1" />
-                  <Picker.Item label="Producto" value="2" />
-                </Picker>
-              </View>
               <View style={styles.inputContainer}>
                 <TextInput
                 ref='ThirdInput'
                 multiline={true}
                 style={styles.inputField}
                 underlineColorAndroid='transparent'
-                placeholder='Descripción (opcional)'
+                placeholder='Mensaje'
                 value={this.state.postText}
                 onChangeText={(text) => this.setState({ postText: text })}
                 placeholderTextColor='rgba(0,0,0,.6)'
                 />
               </View>
-              <TouchableOpacity style={styles.btnAdd} onPress={this.state.productType==1 ? this._handleNewPost : this._handleNewPost2}>
+              <TouchableOpacity style={styles.btnAdd} onPress={this._handleNewPost}>
                 <Icon
                   name={'md-add'}
                   size={30}
@@ -238,19 +212,17 @@ export default class CreateNew extends Component {
   }
  _handleNewPost = () => {
     this.setState({
-      postStatus: 'Agregando producto...',
+      postStatus: 'Enviando notificacion...',
     })
     
-    if (this.state.imagePath) {
+    
       if (this.state.postTitle.length > 0) {
-        if (this.state.postPrice.length > 0) {
           this.setState({ spinnervisible: true })
           const uid = this.props.appStore.user.uid
           const username = this.props.appStore.user.displayName
-          const newPostKey = firebaseApp.database().ref('posts').push().key
+          const newPostKey = firebaseApp.database().ref('push_notifications').push().key
           const imageName = `${newPostKey}.jpg`
-          uploadImage(this.state.imagePath, imageName)
-          .then(url => {
+          
             fetch('https://onesignal.com/api/v1/notifications',
             {
               method: 'POST',
@@ -265,9 +237,9 @@ export default class CreateNew extends Component {
                 headings: {"en": "Valery Plata"},
                 android_sound: "fishing",
                 data: {"puid": newPostKey},
-                big_picture: url,
+                big_picture: this.state.imagePath,
                 ios_sound: "fishing.caf",
-                contents: {"en": " Nueva oferta: " + this.state.postTitle},
+                contents: {"en":" " + this.state.postTitle + "..." + this.state.postText},
                 //filters: [{"field":"tag","key":"username","relation":"=","value":"Herve"}],
               })
             })
@@ -277,41 +249,23 @@ export default class CreateNew extends Component {
             .done()
             console.log(this.state.postText);
             const postData = {
-              username: username,
-              uid: uid,
               createdAt: firebase.database.ServerValue.TIMESTAMP,
               updatedAt: firebase.database.ServerValue.TIMESTAMP,
-              status: "disponible",
-              clientId: "",
-              clientName: "",
-              new_messages: 0,
               text: this.state.postText.replace(/(\r\n|\n|\r)/gm,""),
               title: this.state.postTitle,
-              price: this.state.postPrice,
-              productType: this.state.productType,
-              puid: newPostKey,
-              image: url,
+              image: this.state.imagePath,
               imageHeight: this.state.imageHeight,
               imageWidth: this.state.imageWidth,
             }
             let updates = {}
-            this.props.appStore.post_count = this.props.appStore.post_count + 1
-            updates['/users/' + uid + '/post_count'] = this.props.appStore.post_count
-            this.props.appStore.chat_count = this.props.appStore.chat_count + 1
-            updates['/users/' + uid + '/chat_count'] = this.props.appStore.chat_count
-            updates['/posts/' + newPostKey] = postData
-            updates['/user_posts/' + uid + '/posts/' + newPostKey] = postData
-            updates['/user_chats/' + uid + '/posts/' + newPostKey] = postData
-            updates['/messages_notif/' + newPostKey + '/include_player_ids'] = [this.props.appStore.user.uid]
+            updates['/push_notifications/' + newPostKey] = postData
             firebaseApp.database().ref().update(updates)
             .then(() => {
               this.setState({
-                              postStatus: 'Producto agregado correctamente!',
+                              postStatus: 'Notificacion enviada correctamente!',
                               postTitle: '',
-                              postPrice: '',
                               postText: '',
-                              productType: null,
-                              imagePath: null,
+                              imagePath: 'https://firebasestorage.googleapis.com/v0/b/joyeria-valery.appspot.com/o/images%2Fportada-valery-plata.png?alt=media&token=cb455d75-8712-45f0-a60a-69235693e483',
                               imageHeight: null,
                               imageWidth: null,
                               spinnervisible: false,
@@ -327,128 +281,13 @@ export default class CreateNew extends Component {
               this.setState({ postStatus: 'Something went wrong!!!' })
               this.setState({ spinnervisible: false })
             })
-          })
-          .catch(error => {
-            console.log(error)
-            this.setState({ spinnervisible: false })
-          })
+          
+          
 
-        } else {
-          this.setState({ postStatus: 'Por favor introduzca precio' })
-        }
       } else {
         this.setState({ postStatus: 'Por favor introduzca título' })
       }
-    } else {
-      this.setState({ postStatus: 'Por favor seleccione una imagen' })
-    }
-  }
-  _handleNewPost2 = () => {
-    this.setState({
-      postStatus: 'Agregando producto...',
-    })
     
-    if (this.state.imagePath) {
-      if (this.state.postTitle.length > 0) {
-        if (this.state.postPrice.length > 0) {
-          this.setState({ spinnervisible: true })
-          const uid = this.props.appStore.user.uid
-          const username = this.props.appStore.user.displayName
-          const newPostKey = firebaseApp.database().ref('posts2').push().key
-          const imageName = `${newPostKey}.jpg`
-          uploadImage(this.state.imagePath, imageName)
-          .then(url => {
-            fetch('https://onesignal.com/api/v1/notifications',
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json; charset=utf-8',
-                'Authorization': 'Basic '+this.props.appStore.onesignal_api_key,
-              },
-              body: JSON.stringify(
-              {
-                app_id: this.props.appStore.onesignal_app_id,
-                included_segments: ["All"],
-                headings: {"en": "Valery Plata"},
-                android_sound: "fishing",
-                //data: {"puid": newPostKey},
-                big_picture: url,
-                ios_sound: "fishing.caf",
-                contents: {"en": " Nueva oferta: " + this.state.postTitle},
-                //filters: [{"field":"tag","key":"username","relation":"=","value":"Herve"}],
-              })
-            })
-            .then((responseData) => {
-                console.log("Push POST:" + JSON.stringify(responseData));
-            })
-            .done()
-            console.log(this.state.postText);
-            const postData = {
-              username: username,
-              uid: uid,
-              createdAt: firebase.database.ServerValue.TIMESTAMP,
-              updatedAt: firebase.database.ServerValue.TIMESTAMP,
-              status: "disponible",
-              clientId: "",
-              clientName: "",
-              new_messages: 0,
-              text: this.state.postText.replace(/(\r\n|\n|\r)/gm,""),
-              title: this.state.postTitle,
-              price: this.state.postPrice,
-              productType: this.state.productType,
-              puid: newPostKey,
-              image: url,
-              imageHeight: this.state.imageHeight,
-              imageWidth: this.state.imageWidth,
-            }
-            let updates = {}
-            this.props.appStore.post_count = this.props.appStore.post_count + 1
-            updates['/users/' + uid + '/post_count'] = this.props.appStore.post_count
-            this.props.appStore.chat_count = this.props.appStore.chat_count + 1
-            updates['/users/' + uid + '/chat_count'] = this.props.appStore.chat_count
-            updates['/posts2/' + newPostKey] = postData
-            updates['/user_posts/' + uid + '/posts/' + newPostKey] = postData
-            updates['/user_chats/' + uid + '/posts/' + newPostKey] = postData
-            updates['/messages_notif/' + newPostKey + '/include_player_ids'] = [this.props.appStore.user.uid]
-            firebaseApp.database().ref().update(updates)
-            .then(() => {
-              this.setState({
-                              postStatus: 'Producto agregado correctamente!',
-                              postTitle: '',
-                              postPrice: '',
-                              postText: '',
-                              productType: null,
-                              imagePath: null,
-                              imageHeight: null,
-                              imageWidth: null,
-                              spinnervisible: false,
-                            })
-              setTimeout(() => {
-                this.setState({ postStatus: null })
-              }, 3000)
-              setTimeout(() => {
-                this.refs.scrollContent.scrollToPosition(0, 0, true)
-              }, 1000)
-            })
-            .catch(() => {
-              this.setState({ postStatus: 'Something went wrong!!!' })
-              this.setState({ spinnervisible: false })
-            })
-          })
-          .catch(error => {
-            console.log(error)
-            this.setState({ spinnervisible: false })
-          })
-
-        } else {
-          this.setState({ postStatus: 'Por favor introduzca precio' })
-        }
-      } else {
-        this.setState({ postStatus: 'Por favor introduzca título' })
-      }
-    } else {
-      this.setState({ postStatus: 'Por favor seleccione una imagen' })
-    }
   }
 }
 

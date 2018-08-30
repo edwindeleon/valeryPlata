@@ -14,7 +14,7 @@ import Products from '../components/home_screen/products'
 import CreateNew from '../components/home_screen/createNew'
 import Profile from '../components/home_screen/profile'
 import MyOrders from '../components/home_screen/myOrders'
-import PushNot from '../components/home_screen/myNotifications'
+import AdminSendNot from '../components/home_screen/adminSendNot'
 import MyChats from '../components/home_screen/myChats'
 import UsersList from '../components/home_screen/usersList'
 import NotificationsList from '../components/home_screen/notificationsList'
@@ -88,7 +88,7 @@ export default class HomeScreen extends Component {
             <Timeline tabLabel="tags" />
             <Products tabLabel="diamond-1"/>
             <CreateNew tabLabel="plus"/>
-            <PushNot tabLabel="comment"/>
+            <AdminSendNot tabLabel="comment"/>
             <MyOrders tabLabel="heart"/>
             <NotificationsList tabLabel="bell-alt"/>
             <AdminUsersChat tabLabel="comment-alt"/>
